@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15 JS - crud</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <button type="button" class="btn btn-primary mb-4 mt-4 add" data-bs-toggle="modal" data-bs-target="#pirmas">
+                Naujas
+            </button>
+            <div class="row">
+            </div>
+            <table id="pagrindiniai_duomenys" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Numeris</th>
+                        <th scope="col">Greitis</th>
+                        <th scope="col">Laikas</th>
+                        <th scope="col">Data</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ivesties modalas -->
+        <div class="modal fade" id="pirmas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Naujas automobilis</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="numeris">Numeris</label>
+                                <input type="text" class="form-control" id="numeris">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="greitis">Greitis</label>
+                                <input type="number" class="form-control" id="greitis">
+                            </div>
+                            <div class="form-group">
+                                <label for="laikas">Laikas</label>
+                                <input type="number" class="form-control" id="laikas">
+                            </div>
+                            <div class="form-group">
+                                <label for="data">Data</label>
+                                <input type="date" class="form-control" id="data">
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                        <button id="ivesti" type="button" class="btn btn-primary">Pridėti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Redaguoti modalas -->
+        <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Redaguoti</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <!-- labelio foras kreipiasi i inputo id, jeigu jie sutampa, paspaudus ant labelio iskarto focusina(galima rasyti) inputa -->
+                                <label for="numeris_edit">Numeris</label>
+                                <input type="text" class="form-control" id="numeris_edit">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="greitis_edit">Greitis</label>
+                                <input type="number" class="form-control" id="greitis_edit">
+                            </div>
+                            <div class="form-group">
+                                <label for="laikas_edit">Laikas</label>
+                                <input type="number" class="form-control" id="laikas_edit">
+                            </div>
+                            <div class="form-group">
+                                <label for="data_edit">Data</label>
+                                <input type="date" class="form-control" id="data_edit">
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                        <button id="redaguoti" type="button" class="btn btn-primary">Redaguoti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- trinti modalas -->
+        <div class="modal fade" id="trinti_modalas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Trinti</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Ar tikrai norite istrinti?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ne</button>
+                        <button id="istrinti" data-bs-dismiss="modal" type="button" class="btn btn-success">Taip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
